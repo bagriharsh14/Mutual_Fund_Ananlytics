@@ -46,12 +46,12 @@ def explore_fund_master(datasets):
     print("EXPLORING FUND MASTER")
     print("==========================================")
     
-    fm = datasets.get("fund_master.csv")
+    fm = datasets.get("01_fund_master.csv")
     if fm is not None:
         print(f"• Unique Fund Houses ({fm['fund_house'].nunique()}): {fm['fund_house'].unique().tolist()}")
         print(f"• Unique Categories ({fm['category'].nunique()}): {fm['category'].unique().tolist()}")
         print(f"• Unique Sub-Categories ({fm['sub_category'].nunique()}): {fm['sub_category'].unique().tolist()}")
-        print(f"• Unique Risk Grades ({fm['risk_grade'].nunique()}): {fm['risk_grade'].unique().tolist()}")
+        print(f"• Unique Risk Grades ({fm['risk_category'].nunique()}): {fm['risk_category'].unique().tolist()}")
     else:
         print("fund_master.csv not found.")
     print("-" * 60 + "\n")
@@ -61,12 +61,12 @@ def validate_amfi_codes(datasets):
     print("AMFI CODE REFERENTIAL INTEGRITY VALIDATION")
     print("==========================================")
     
-    fm = datasets.get("fund_master.csv")
-    nav = datasets.get("nav_history.csv")
+    fm = datasets.get("01_fund_master.csv")
+    nav = datasets.get("02_nav_history.csv")
 
     if fm is not None and nav is not None:
-        master_codes = set(fm["scheme_code"].unique())
-        nav_codes = set(nav["scheme_code"].unique())
+        master_codes = set(fm["amfi_code"].unique())
+        nav_codes = set(nav["amfi_code"].unique())
         
         missing_in_nav = master_codes - nav_codes
         

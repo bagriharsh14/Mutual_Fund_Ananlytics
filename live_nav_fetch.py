@@ -26,18 +26,23 @@ def fetch_and_save_individual_navs():
             meta = json_data.get("meta", {})
             data = json_data.get("data", [])
             
+            # Extract metadata values (keys are strictly lowercase)
+            scheme_name = meta.get("scheme_name", "")
+            fund_house = meta.get("fund_house", "")
+            
             # Parse daily NAV entries into DataFrame
             df = pd.DataFrame(data)
             df["scheme_code"] = code
-            df["scheme_name"] = meta.get("scheme_name", "")
-            df["fund_house"] = meta.get("fund_house", "")
+            df["scheme_name"] = scheme_name
+            df["fund_house"] = fund_house
             
             # Save individually without combining
             file_name = f"{file_prefix}_raw.csv"
             file_path = os.path.join(raw_dir, file_name)
             df.to_csv(file_path, index=False)
             
-            print(f"[✓] Saved {meta.get('scheme_name', file_prefix)} ({code}) -> '{file_path}' ({len(df)} records)")
+            print(f"[✓] Saved {scheme_name} ({code}) -> '{file_path}' ({len(df)} records)")
+            print(f"    Fund House: {fund_house}")
         else:
             print(f"[X] Failed to fetch scheme code {code}: Status {response.status_code}")
 
