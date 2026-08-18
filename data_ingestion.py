@@ -1,4 +1,13 @@
-# data_ingestion.py
+"""
+data_ingestion.py - ETL Data Ingestion module for Bluestock Mutual Fund Analytics.
+
+Loads all raw CSV files from Data/Raw/ and Data/Processed/ directories,
+performs data validation and type enforcement, and provides inspection utilities.
+
+Usage:
+    python data_ingestion.py
+    or import: from data_ingestion import ingest_and_inspect_data
+"""
 import os
 import glob
 import pandas as pd

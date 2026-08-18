@@ -1,3 +1,12 @@
+"""
+live_nav_fetch.py - Live NAV Fetcher for Bluestock Mutual Fund Analytics.
+
+Fetches current NAV data for specified AMFI scheme codes via the mfapi.in API
+and saves individual CSV files to Data/Raw/ directory.
+
+Usage:
+    python live_nav_fetch.py
+"""
 import os
 import requests
 import pandas as pd
