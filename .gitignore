@@ -15,13 +15,18 @@ venv/
 # Scratch / temporary files
 scratch/
 
+# Database files (Per submission guidelines: share sql/schema.sql, do not commit .db)
+*.db
+*.sqlite
+*.sqlite3
+data/db/*.db
+*.db-journal
+
 # OS files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# IDE
+# IDE & Editor files
 .vscode/
 .idea/
-
-# Large binary data files (keep CSVs but exclude raw binary)
-*.db-journal

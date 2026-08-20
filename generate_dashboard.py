@@ -46,7 +46,17 @@ plt.rcParams.update({
 # ===============================================================
 # DATA LOADING
 # ===============================================================
-conn = sqlite3.connect('bluestock_mf.db')
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+DB_PATH = BASE_DIR / 'data' / 'db' / 'bluestock_mf.db'
+if not DB_PATH.exists():
+    DB_PATH = BASE_DIR / 'bluestock_mf.db'
+
+SCORECARD_PATH = BASE_DIR / 'data' / 'processed' / 'fund_scorecard.csv'
+if not SCORECARD_PATH.exists():
+    SCORECARD_PATH = BASE_DIR / 'fund_scorecard.csv'
+
+conn = sqlite3.connect(str(DB_PATH))
 
 df_fund    = pd.read_sql('SELECT * FROM dim_fund', conn)
 df_nav     = pd.read_sql('SELECT * FROM fact_nav', conn)
@@ -57,7 +67,7 @@ df_folio   = pd.read_sql('SELECT * FROM fact_industry_folio', conn)
 df_txn     = pd.read_sql('SELECT * FROM fact_transactions', conn)
 df_cat     = pd.read_sql('SELECT * FROM fact_category_inflows', conn)
 df_bm      = pd.read_sql('SELECT * FROM fact_benchmark_indices', conn)
-df_score   = pd.read_csv('fund_scorecard.csv')
+df_score   = pd.read_csv(SCORECARD_PATH)
 
 df_nav['date'] = pd.to_datetime(df_nav['date'])
 df_aum['date'] = pd.to_datetime(df_aum['date'])
