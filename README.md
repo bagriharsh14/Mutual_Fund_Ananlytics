@@ -43,35 +43,6 @@ bluestock_mf_capstone/
 └── README.md                          # Project documentation
 ```
 
----
-
-## 🎯 Deliverables & Evaluation Mapping
-
-| ID | Deliverable | Format | Weight | Status / Location | Description |
-|:---|:---|:---:|:---:|:---:|:---|
-| **D1** | ETL pipeline script | `.py` | 15% | `scripts/etl_pipeline.py` | Automated ingestion, validation, weekend `ffill()`, SQLite loading |
-| **D2** | SQLite database | `.db` + `.sql` | 10% | `sql/schema.sql`, `sql/queries.sql` | Star-schema DDL, 10 queries executed with documented results |
-| **D3** | EDA notebook | `.ipynb` | 15% | `notebooks/03_eda_analysis.ipynb` | In-depth exploratory analysis, visual charts, documented findings |
-| **D4** | Performance metrics | `.ipynb` + `.csv` | 15% | `notebooks/04_performance_analytics.ipynb`<br>`data/processed/fund_scorecard.csv`<br>`data/processed/alpha_beta.csv` | Mathematical accuracy, 252-day CAGR, Sharpe, Sortino, Alpha/Beta vs NIFTY 100 |
-| **D5** | Interactive dashboard | `.pdf` + `.png` | 20% | `dashboard/Dashboard.pdf`<br>`dashboard/*.png` | 4 publication-quality dashboard pages with at least 2 interactive slicers per page |
-| **D6** | Advanced analytics | `.ipynb` | 10% | `notebooks/05_advanced_analytics.ipynb`<br>`data/processed/var_cvar_report.csv` | Historical VaR/CVaR (95%), 90-day rolling Sharpe, cohort retention, SIP churn |
-| **D7** | Final report + slides | `.pdf` + `.pptx` | 15% | `reports/Final_Report.pdf`<br>`reports/Presentation.pptx` | 15-page comprehensive report and 12-slide executive presentation |
-
----
-
-## 🌟 Bonus Challenges Completed
-
-- **B1 — Scheduled Live NAV Fetcher (`scripts/live_nav_fetch.py`)**:
-  Automated script fetching real-time NAV from `mfapi.in` for targeted AMFI schemes, formatted for cron execution (`0 20 * * 1-5`).
-- **B3 — Monte Carlo Simulation (`notebooks/05_advanced_analytics.ipynb`)**:
-  5-year stochastic NAV projection with 1,000 simulations and 10th/50th/90th percentile uncertainty bands.
-- **B4 — Markowitz Efficient Frontier (`notebooks/05_advanced_analytics.ipynb`)**:
-  Mean-variance portfolio optimization computing the optimal capital allocation across top 5 schemes.
-- **B5 — Recommender Engine CLI (`scripts/recommender.py`)**:
-  Interactive command-line tool recommending top 3 funds based on Sharpe ratio for `Low`, `Moderate`, and `High` risk profiles.
-
----
-
 ## ⚙️ Setup & Installation
 
 ### 1. Prerequisites
